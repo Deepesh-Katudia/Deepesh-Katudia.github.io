@@ -1,0 +1,57 @@
+/* Optional: small reset for consistent sizing */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Step 9: center the whole board on the page */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+  /* Feel free to tweak background later (Step 10) */
+  background: #f7f7f7;
+}
+
+/* Step 6: flex container for the board (stacks rows vertically) */
+.board {
+  display: flex;
+  flex-direction: column; /* rows on top of each other */
+  gap: 8px;               /* Step 7: gap between rows */
+}
+
+/* Step 6: flex container for a row (cells align horizontally) */
+.row {
+  display: flex;
+  flex-direction: row; /* cells left-to-right */
+  gap: 8px;            /* Step 7: gap between cells */
+}
+
+/* Step 5: cell base styles */
+.cell {
+  width: 60px;
+  height: 60px;
+  border: 1px solid red;
+  background: cyan;
+
+  /* Step 8: center temporary X content (also useful later for X/O) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;   /* adjust until it looks good */
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Optional polish (Step 10) */
+.board {
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  background: white;
+}
