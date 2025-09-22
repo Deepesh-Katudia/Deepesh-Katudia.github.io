@@ -7,15 +7,84 @@ html, body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* HUD styling */
+.hud {
+  text-align: center;
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+/* Status text */
+.hud #status {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* Score line */
+.hud strong {
+  color: #0077cc;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.hud button {
+  margin: 6px 4px 0;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0077cc;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease-in-out;
+}
+
+.hud button:hover {
+  background-color: #005fa3;
+}
+
+/* Keep HUD above and centered */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+
+/* Score line styling */
+.hud .score-line {
+  font-size: 1.4rem;   /* bigger */
+  font-weight: bold;  /* stronger emphasis */
+  color: #222;        /* dark for contrast */
+  margin: 10px 0;
+}
+
+/* Highlight the numbers differently */
+.hud .score-line span {
+  color: #d32f2f;     /* red highlight for numbers */
+  font-weight: 700;
+}
+
+
 /* Step 9: center the whole board on the page */
 .page {
   min-height: 100vh;
   display: flex;
-  align-items: center;      /* vertical center */
-  justify-content: center;  /* horizontal center */
-  /* Feel free to tweak background later (Step 10) */
+  flex-direction: column-reverse;   /* stack HUD above board */
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically */
   background: #f7f7f7;
+  gap: 30px;                /* space between HUD and board */
 }
+
 
 /* Step 6: flex container for the board (stacks rows vertically) */
 .board {
@@ -48,10 +117,14 @@ html, body {
   user-select: none;
 }
 
-/* Optional polish (Step 10) */
-.board {
-  padding: 8px;
-  border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-  background: white;
+/* 🎉 Win animation */
+.cell.win {
+  animation: pop 0.35s ease-out 3;
+  background: #b6ffb6;      /* subtle green flash */
+  border-color: #2ecc71;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
 }
