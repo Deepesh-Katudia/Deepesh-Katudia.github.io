@@ -1,24 +1,21 @@
-// Hello World
-console.log("Hello World");
-
 // ---------- Game state ----------
-let board;                 // ["", "X", "O", ...]
-let currentPlayer;         // "X" | "O"
+let board;               
+let currentPlayer;         
 let gameOver;
-let winner;                // "X" | "O" | null
-let scores;                // { X: n, O: n, draws: n }
-let winningLine = null;    // [a,b,c] when someone wins
-let mode = "bot";          // "bot" | "pvp"  (default vs Bot)
+let winner;                
+let scores;               
+let winningLine = null;    
+let mode = "bot";          
 const botMark = "O";
 
-// All winning combos
+
 const LINES = [
   [0,1,2],[3,4,5],[6,7,8],
   [0,3,6],[1,4,7],[2,5,8],
   [0,4,8],[2,4,6],
 ];
 
-// ---------- Init / Render ----------
+
 function initializeGame(hardReset = false) {
   if (hardReset || !scores) scores = { X: 0, O: 0, draws: 0 };
   board = Array(9).fill("");
@@ -36,7 +33,7 @@ function renderBoard() {
     cells[i].classList.remove("win");
   }
 
-  // Highlight winning triplet
+ 
   if (winningLine) {
     winningLine.forEach(i => {
       const el = document.querySelector(`.cell:nth-of-type(${(i%3)+1})`);
@@ -60,7 +57,7 @@ function renderBoard() {
   document.getElementById("scoreDraws").textContent = scores.draws;
 }
 
-// ---------- Winner / Draw ----------
+
 function checkWinner() {
   for (const [a,b,c] of LINES) {
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
@@ -81,16 +78,16 @@ function checkWinner() {
   return undefined;
 }
 
-// ---------- Moves ----------
+
 function cellClicked(index) {
   if (gameOver || board[index]) return;
 
-  // Human move
+
   makeMove(index, currentPlayer);
   renderBoard();
   if (gameOver) return;
 
-  // If playing vs bot and it's bot's turn, let bot move
+
   if (mode === "bot" && currentPlayer === botMark) {
     setTimeout(() => {
       const i = chooseBotMove();
@@ -107,26 +104,26 @@ function makeMove(index, player) {
   if (!gameOver) currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
-// ---------- Simple Bot (win > block > center > corners > sides) ----------
+
 function chooseBotMove() {
   const me = botMark;
   const opp = me === "X" ? "O" : "X";
 
-  // Try to win
+
   let mv = findLineMove(me);
   if (mv !== -1) return mv;
 
-  // Block
+ 
   mv = findLineMove(opp);
   if (mv !== -1) return mv;
 
-  // Center
+
   if (!board[4]) return 4;
 
-  // Corners
+
   for (const i of [0,2,6,8]) if (!board[i]) return i;
 
-  // Sides
+ 
   for (const i of [1,3,5,7]) if (!board[i]) return i;
 
   return -1;
@@ -142,20 +139,20 @@ function findLineMove(mark) {
   return -1;
 }
 
-// ---------- Mode switching ----------
+
 function setMode(newMode) {
   if (newMode !== "bot" && newMode !== "pvp") return;
   mode = newMode;
 
-  // Toggle button styles
+
   document.getElementById("btnPvp").classList.toggle("active", mode === "pvp");
   document.getElementById("btnBot").classList.toggle("active", mode === "bot");
 
-  // New round in the selected mode (keep cumulative scores)
+  
   initializeGame();
 }
 
-// ---------- Boot ----------
+
 window.addEventListener("DOMContentLoaded", () => {
   initializeGame(true);
 });

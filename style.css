@@ -1,4 +1,4 @@
-/* Optional: small reset for consistent sizing */
+
 * { box-sizing: border-box; }
 
 html, body {
@@ -7,7 +7,7 @@ html, body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* HUD styling */
+
 .hud {
   text-align: center;
   padding: 12px 20px;
@@ -19,29 +19,69 @@ html, body {
   margin-bottom: 10px;
 }
 
-/* Mode buttons row */
-.mode-toggle { display: flex; gap: 10px; justify-content: center; margin-bottom: 10px; }
-.mode-btn {
-  padding: 6px 12px; border-radius: 999px; border: 1px solid #b7c1c8; background: #eef3f7;
-  cursor: pointer; font-weight: 600;
+
+.mode-toggle { 
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    margin-bottom: 10px; 
 }
-.mode-btn.active { background: #0077cc; color: #fff; border-color: #0077cc; }
 
-#status { font-size: 1.2rem; font-weight: 700; margin: 8px 0; color: #333; }
+.mode-btn {
+  padding: 6px 12px; 
+  border-radius: 999px; 
+  border: 1px solid #b7c1c8; 
+  background: #eef3f7;
+  cursor: pointer; 
+  font-weight: 600;
+}
 
-.score-line { font-size: 1.4rem; font-weight: 700; color: #222; margin: 10px 0; }
-.score-line span { color: #d32f2f; font-weight: 700; }
+.mode-btn.active { 
+    background: #0077cc; 
+    color: #fff; 
+    border-color: #0077cc; 
+}
 
-.controls { margin-top: 12px; display: flex; gap: 8px; justify-content: center; }
+#status { 
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    margin: 8px 0; 
+    color: #333; 
+}
+
+.score-line { 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    color: #222; 
+    margin: 10px 0; 
+}
+
+.score-line span { 
+    color: #d32f2f; 
+    font-weight: 700; 
+}
+
+.controls { 
+    margin-top: 12px; 
+    display: flex; 
+    gap: 8px; 
+    justify-content: center; 
+}
+
 .controls button {
   padding: 6px 12px;
   border: none; border-radius: 6px;
-  background-color: #0077cc; color: white; cursor: pointer; font-size: 0.9rem;
+  background-color: #0077cc; 
+  color: white; 
+  cursor: pointer; 
+  font-size: 0.9rem;
 }
-.controls button:hover { background-color: #005fa3; }
+
+.controls button:hover { 
+    background-color: #005fa3; 
+}
 
 
-/* Status text */
 .hud #status {
   font-size: 1.5rem;
   font-weight: bold;
@@ -49,13 +89,13 @@ html, body {
   color: #333;
 }
 
-/* Score line */
+
 .hud strong {
   color: #0077cc;
   font-size: 1rem;
 }
 
-/* Buttons */
+
 .hud button {
   margin: 6px 4px 0;
   padding: 6px 12px;
@@ -72,7 +112,8 @@ html, body {
   background-color: #005fa3;
 }
 
-/* Keep HUD above and centered */
+
+
 .game-container {
   display: flex;
   flex-direction: column;
@@ -81,68 +122,65 @@ html, body {
 }
 
 
-/* Score line styling */
+
 .hud .score-line {
-  font-size: 1.4rem;   /* bigger */
-  font-weight: bold;  /* stronger emphasis */
-  color: #222;        /* dark for contrast */
+  font-size: 1.4rem;   
+  font-weight: bold;  
+  color: #222;        
   margin: 10px 0;
 }
 
-/* Highlight the numbers differently */
+
 .hud .score-line span {
-  color: #d32f2f;     /* red highlight for numbers */
+  color: #d32f2f;     
   font-weight: 700;
 }
 
 
-/* Step 9: center the whole board on the page */
 .page {
   min-height: 100vh;
   display: flex;
-  flex-direction: column-reverse;   /* stack HUD above board */
-  align-items: center;      /* center horizontally */
-  justify-content: center;  /* center vertically */
+  flex-direction: column-reverse;   
+  align-items: center;      
+  justify-content: center; 
   background: #f7f7f7;
-  gap: 30px;                /* space between HUD and board */
+  gap: 30px;              
 }
 
 
-/* Step 6: flex container for the board (stacks rows vertically) */
+
 .board {
   display: flex;
-  flex-direction: column; /* rows on top of each other */
-  gap: 8px;               /* Step 7: gap between rows */
+  flex-direction: column; 
+  gap: 8px;               
 }
 
-/* Step 6: flex container for a row (cells align horizontally) */
+
 .row {
   display: flex;
-  flex-direction: row; /* cells left-to-right */
-  gap: 8px;            /* Step 7: gap between cells */
+  flex-direction: row; 
+  gap: 8px;            
 }
 
-/* Step 5: cell base styles */
+
 .cell {
   width: 60px;
   height: 60px;
   border: 1px solid red;
   background: cyan;
-
-  /* Step 8: center temporary X content (also useful later for X/O) */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;   /* adjust until it looks good */
+  font-size: 2rem;   
   font-weight: 700;
   line-height: 1;
   user-select: none;
 }
 
-/* 🎉 Win animation */
+
 .cell.win {
   animation: pop 0.35s ease-out 3;
-  background: #b6ffb6;      /* subtle green flash */
+  background: #b6ffb6;      
   border-color: #2ecc71;
 }
 @keyframes pop {
