@@ -19,6 +19,28 @@ html, body {
   margin-bottom: 10px;
 }
 
+/* Mode buttons row */
+.mode-toggle { display: flex; gap: 10px; justify-content: center; margin-bottom: 10px; }
+.mode-btn {
+  padding: 6px 12px; border-radius: 999px; border: 1px solid #b7c1c8; background: #eef3f7;
+  cursor: pointer; font-weight: 600;
+}
+.mode-btn.active { background: #0077cc; color: #fff; border-color: #0077cc; }
+
+#status { font-size: 1.2rem; font-weight: 700; margin: 8px 0; color: #333; }
+
+.score-line { font-size: 1.4rem; font-weight: 700; color: #222; margin: 10px 0; }
+.score-line span { color: #d32f2f; font-weight: 700; }
+
+.controls { margin-top: 12px; display: flex; gap: 8px; justify-content: center; }
+.controls button {
+  padding: 6px 12px;
+  border: none; border-radius: 6px;
+  background-color: #0077cc; color: white; cursor: pointer; font-size: 0.9rem;
+}
+.controls button:hover { background-color: #005fa3; }
+
+
 /* Status text */
 .hud #status {
   font-size: 1.5rem;
@@ -42,7 +64,7 @@ html, body {
   background-color: #0077cc;
   color: white;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.0rem;
   transition: background 0.2s ease-in-out;
 }
 
