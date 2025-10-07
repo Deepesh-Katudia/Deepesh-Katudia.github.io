@@ -1,0 +1,190 @@
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+.hud {
+  text-align: center;
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+
+.mode-toggle { 
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    margin-bottom: 10px; 
+}
+
+.mode-btn {
+  padding: 6px 12px; 
+  border-radius: 999px; 
+  border: 1px solid #b7c1c8; 
+  background: #eef3f7;
+  cursor: pointer; 
+  font-weight: 600;
+}
+
+.mode-btn.active { 
+    background: #0077cc; 
+    color: #fff; 
+    border-color: #0077cc; 
+}
+
+#status { 
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    margin: 8px 0; 
+    color: #333; 
+}
+
+.score-line { 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    color: #222; 
+    margin: 10px 0; 
+}
+
+.score-line span { 
+    color: #d32f2f; 
+    font-weight: 700; 
+}
+
+.controls { 
+    margin-top: 12px; 
+    display: flex; 
+    gap: 8px; 
+    justify-content: center; 
+}
+
+.controls button {
+  padding: 6px 12px;
+  border: none; border-radius: 6px;
+  background-color: #0077cc; 
+  color: white; 
+  cursor: pointer; 
+  font-size: 0.9rem;
+}
+
+.controls button:hover { 
+    background-color: #005fa3; 
+}
+
+
+.hud #status {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+
+.hud strong {
+  color: #0077cc;
+  font-size: 1rem;
+}
+
+
+.hud button {
+  margin: 6px 4px 0;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0077cc;
+  color: white;
+  cursor: pointer;
+  font-size: 1.0rem;
+  transition: background 0.2s ease-in-out;
+}
+
+.hud button:hover {
+  background-color: #005fa3;
+}
+
+
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+
+
+.hud .score-line {
+  font-size: 1.4rem;   
+  font-weight: bold;  
+  color: #222;        
+  margin: 10px 0;
+}
+
+
+.hud .score-line span {
+  color: #d32f2f;     
+  font-weight: 700;
+}
+
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column-reverse;   
+  align-items: center;      
+  justify-content: center; 
+  background: #f7f7f7;
+  gap: 30px;              
+}
+
+
+
+.board {
+  display: flex;
+  flex-direction: column; 
+  gap: 8px;               
+}
+
+
+.row {
+  display: flex;
+  flex-direction: row; 
+  gap: 8px;            
+}
+
+
+.cell {
+  width: 60px;
+  height: 60px;
+  border: 1px solid red;
+  background: cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;   
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+
+.cell.win {
+  animation: pop 0.35s ease-out 3;
+  background: #b6ffb6;      
+  border-color: #2ecc71;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
